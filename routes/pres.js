@@ -21,20 +21,27 @@ router.get("/about", isAuthenticated, async (req, res) => {
   }
 });
 
+router.get("/add", isAuthenticated, async (req, res) => {
+  res.render("add");
+});
+
 // Add Prescription
 router.post("/add", isAuthenticated, async (req, res) => {
   const { medicine, time, days } = req.body;
   const userId = req.session.userId || req.cookies.userId;
+  const fullTime = new Date();
+  const [hours, minutes] = time.split(":");
+  fullTime.setHours(hours, minutes, 0, 0);
 
   const prescription = new Prescription({
     userId,
     medicineName: medicine,
-    time: new Date(time),
+    time: fullTime,
     days,
   });
 
   await prescription.save();
-  res.redirect("/pres/about");  // Redirecting to /pres/about after adding prescription
+  res.redirect("/pres/about"); // Redirecting to /pres/about after adding prescription
 });
 
 // Auto-Delete Expired Prescriptions
@@ -44,5 +51,3 @@ router.use(async (req, res, next) => {
 });
 
 module.exports = router;
-
-

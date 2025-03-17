@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const { handleUserSignup, handleUserLogin } = require("../controllers/user");
+const bcrypt = require("bcrypt");
 
 // Login Page
 router.get("/login", (req, res) => {
@@ -8,20 +10,7 @@ router.get("/login", (req, res) => {
 });
 
 // Handle Login
-router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username, password });
-
-  if (!user) {
-    return res.status(401).send("Invalid credentials");
-  }
-
-  // Set session and cookie
-  req.session.userId = user._id;
-  res.cookie("userId", user._id, { maxAge: 24 * 60 * 60 * 1000 });
-
-  res.redirect("/pres/about"); // Redirect to prescriptions page
-});
+router.post("/login", handleUserLogin);
 
 // Logout
 router.get("/logout", (req, res) => {
@@ -29,5 +18,7 @@ router.get("/logout", (req, res) => {
   res.clearCookie("userId");
   res.redirect("/auth/login");
 });
+
+router.post("/register", handleUserSignup);
 
 module.exports = router;
