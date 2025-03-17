@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Prescriptions</title>
+</head>
+<body>
+  <h1>Welcome to Your Prescriptions</h1>
+
+  <% if (prescriptions.length > 0) { %>
+    <h2>Your Prescription List</h2>
+    <ul>
+      <% prescriptions.forEach(prescription => { %>
+        <li>
+          <strong>Medicine:</strong> <%= prescription.medicineName %><br>
+          <strong>Time:</strong> <%= prescription.time.toString() %><br>
+          <strong>Days:</strong> <%= prescription.days %>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>You don't have any prescriptions yet.</p>
+  <% } %>
+
+  <a href="/pres/add">Add a Prescription</a><br>
+  <a href="/auth/login">Logout</a>
+</body>
+</html>
