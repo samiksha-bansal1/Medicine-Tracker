@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Prescription</title>
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="stylesheet" href="/css/style3.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="form-container">
+      <h2 class="form-title">Edit Prescription</h2>
+      <form
+        action="/pres/edit/<%= prescription.id %>"
+        method="POST"
+        class="edit-form"
+      >
+        <input type="hidden" name="id" value="<%= prescription.id %>" />
+
+        <label for="medicine">Medicine Name:</label>
+        <input
+          type="text"
+          id="medicine"
+          name="medicine"
+          value="<%= prescription.medicineName %>"
+          required
+        />
+
+        <label for="time">Time:</label>
+        <input
+          type="time"
+          id="time"
+          name="time"
+          value="<%= prescription.time.toISOString().slice(11, 16) %>"
+          required
+        />
+
+        <label for="days">Days:</label>
+        <input
+          type="number"
+          id="days"
+          name="days"
+          min="1"
+          value="<%= prescription.days %>"
+          required
+        />
+
+        <div class="form-buttons">
+          <button type="submit" class="update-btn">Update</button>
+          <a href="/pres/about" class="cancel-btn">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

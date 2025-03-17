@@ -50,4 +50,44 @@ router.use(async (req, res, next) => {
   next();
 });
 
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const prescription = await Prescription.findById(req.params.id);
+    if (!prescription) {
+      return res.status(404).send("Prescription not found");
+    }
+    res.render("editPrescription", { prescription });
+  } catch (err) {
+    res.status(500).send("Server Error");
+  }
+});
+
+router.post("/edit/:id", isAuthenticated, async (req, res) => {
+  try {
+    const { medicine, time, days } = req.body;
+    const fullTime = new Date();
+    const [hours, minutes] = time.split(":");
+    fullTime.setHours(hours, minutes, 0, 0);
+
+    await Prescription.findByIdAndUpdate(req.params.id, {
+      medicineName: medicine,
+      time: fullTime,
+      days,
+    });
+    res.redirect("/pres/about");
+  } catch (err) {
+    res.status(500).send("Server Error");
+  }
+});
+
+// Delete Prescription
+router.post("/delete/:id", isAuthenticated, async (req, res) => {
+  try {
+    await Prescription.findByIdAndDelete(req.params.id);
+    res.redirect("/pres/about");
+  } catch (err) {
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;

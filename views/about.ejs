@@ -13,51 +13,7 @@
     <title>Admin Dashboard Panel</title>
 </head>
 <body>
-    <nav>
-        <div class="logo-name">
-            <div class="logo-image">
-               <img src="images/logo.png" alt="">
-            </div>
-            <span class="logo_name">
-                <span style="color: black; ;">Med</span>
-                <span style="color: rgb(130, 237, 130); ;">Remind</span>
-            </span>
-        </div>
-        <div class="menu-items">
-            <ul class="nav-links">
-                <li><a href="#">
-                    <i class="uil uil-estate"></i>
-                    <span class="link-name">Dashboard</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Details</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">Analytics</span>
-                </a></li>
-                <li><a href="/pres/add">
-                    <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Add</span>
-                </a></li>
-                <li><a href="">
-                    <i class="uil uil-share"></i>
-                    <span class="link-name">Refill Stock</span>
-                </a></li>
-            </ul>
-            
-            <ul class="logout-mode">
-                <li><a href="/auth/login">
-                    <i class="uil uil-signout"></i>
-                    <span class="link-name">Logout</span>
-                </a></li>
-                <li class="mode">
-                    <div class="mode-toggle"></div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <%- include('partials/navbar') %>
     <section class="dashboard">
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
@@ -98,15 +54,14 @@
       <% prescriptions.forEach(prescription => { %>
         <li class="prescription-item">
           <strong>Medicine:</strong> <%= prescription.medicineName %><br>
-          <strong>Time:</strong> <%= prescription.time.toString() %><br>
+          <strong>Time:</strong> <%= prescription.time.toString() %><dbr>
           <strong>Days:</strong> <%= prescription.days %>
                      <!-- Buttons for edit & delete -->
           <div class="prescription-actions">
-            <button class="prescription-btn edit-btn" onclick="editPrescription('<%= prescription.id %>')">Edit</button>
-            <button class="prescription-btn delete-btn" onclick="deletePrescription('<%= prescription.id %>')">Delete</button>
+            <button class="prescription-btn edit-btn" onclick="window.location.href='/pres/edit/<%= prescription.id %>'">Edit</button>
+            <button class="prescription-btn delete-btn" onclick="confirmDelete('<%= prescription.id %>')">Delete</button>
           </div>
-                    </div>
-          
+        </div>
         </li>
       <% }); %>
     </ul>
@@ -116,7 +71,22 @@
   
         </div>
     </section>
-    <script src="script.js"></script>
+    <script>
+        function confirmDelete(prescriptionId) {
+            if (confirm("Are you sure you want to delete this prescription?")) {
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = `/pres/delete/${prescriptionId}`;
+                const methodInput = document.createElement("input");
+                methodInput.type = "hidden";
+                methodInput.name = "_method";
+                methodInput.value = "DELETE"; 
+                form.appendChild(methodInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+    </script>
+         
 </body>
 </html>
-
