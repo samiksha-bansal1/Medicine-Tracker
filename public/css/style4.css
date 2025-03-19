@@ -1,0 +1,12 @@
+.logo-name {
+    display: flex;
+    align-items: center; /* Vertical align */
+    gap: 8px; /* Space between logo and text */
+  }
+  
+  .logo-image img {
+    width: 80px; /* Adjust size */
+    height: 55px;
+    border-radius: 50%; /* Optional: Rounded logo */
+  }
+  

@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const session = require("express-session");
+const patientRoutes = require("./routes/patient");
 
 const app = express();
 const PORT = 5000;
@@ -28,6 +29,8 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 app.use(express.static("public"));
+app.use("/patient", patientRoutes);
+
 
 // **Session Middleware (Move this before routes)**
 app.use(
@@ -51,6 +54,7 @@ app.use("/pres", presRoutes);
 app.get("/", (req, res) => {
   res.redirect("/auth/login");
 });
+
 
 // Server Listening
 app.listen(PORT, () => {

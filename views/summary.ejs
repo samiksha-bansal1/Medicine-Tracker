@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Summary</title>
+    <link rel="stylesheet" href="/css/summary.css">
+    <style>
+        #success-alert {
+    position: fixed;
+    right: -320px; /* Initially hidden */
+    top: 20px;
+    width: 300px;
+    background: #28a745; /* Green success */
+    color: white;
+    padding: 15px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    transition: right 0.5s ease-in-out;
+}
+
+#success-alert.show {
+    right: 0; /* Slide in */
+}
+
+#success-alert .close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+    </style>
+</head>
+
+<body>
+
+    <h1>Patient Details Slip</h1>
+
+    <!-- Success Alert Sidebar -->
+    <% if (message) { %>
+        <div id="success-alert" class="show">
+            ✅ <%= message %>
+            <button class="close-btn" onclick="document.getElementById('success-alert').classList.remove('show')">×</button>
+        </div>
+    <% } %>
+
+    <p><strong>Name:</strong> <%= name %></p>
+    <p><strong>Email:</strong> <%= email %></p>
+    <p><strong>Phone:</strong> <%= phone %></p>
+    <p><strong>Age:</strong> <%= age %></p>
+    <p><strong>Gender:</strong> <%= gender %></p>
+    <p><strong>Condition:</strong> <%= condition %></p>
+
+    <script>
+        // Automatically hide alert after 3 seconds
+        setTimeout(() => {
+            document.getElementById('success-alert').classList.remove('show');
+        }, 3000);
+    </script>
+
+</body>
+</html>

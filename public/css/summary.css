@@ -1,0 +1,63 @@
+body {
+    font-family: "Courier New", Courier, monospace; /* Old-style font */
+    font-size: 50px; /* Slightly larger font */
+    line-height: 1.5; /* Line spacing for clarity */
+    background-color: white; /* White background for print clarity */
+    color: black; /* Black text */
+    margin: 20px;
+    text-align: center; /* Space around the document */
+}
+
+h1 {
+    text-align: center; /* Center aligns the heading */
+    border-bottom: 2px solid black; /* Line below the heading */
+    padding-bottom: 10px;
+    font-size: 27px; /* Spacing below the heading */
+}
+
+p {
+    margin: 10px 0; /* Adds spacing between paragraphs */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); /* Faded black line below each paragraph */
+    padding-bottom: 10px; /* Adds space between text and line */
+    font-size: 15px;
+}
+
+#success-alert {
+    position: fixed;
+    right: -320px; /* Initially hidden */
+    top: 20px;
+    width: 300px;
+    background: white; /* Background for old-style */
+    border: 2px solid black; /* Black border for box appearance */
+    color: black; /* Black text for alert */
+    padding: 15px;
+    border-radius: 0; /* No rounded corners */
+    box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    transition: right 0.5s ease-in-out; /* Smooth sliding effect */
+}
+
+#success-alert.show {
+    right: 0; /* Slide-in effect */
+}
+
+#success-alert .close-btn {
+    background: transparent;
+    border: none;
+    color: black; /* Black close button */
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+strong {
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+div.line {
+    border-bottom: 1px solid black; /* Black line for input areas */
+    height: 20px; /* Adds space for input */
+    margin: 10px 0; /* Margin between lines */
+}
