@@ -1,0 +1,88 @@
+/* ---- Overall Page Styling ---- */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    to bottom,
+    #e3f2e1,
+    #b2d3a8,
+    #80b57b,
+    #63b16d,
+    #63a765,
+    #5da95d
+  );
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* ---- Heading Styling ---- */
+h2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 35px; /* Adjusted Size */
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #062a11;
+}
+
+/* ---- Form Box Styling ---- */
+
+form {
+  max-width: 650px; /* Bigger Width */
+  background: #ffffff;
+  padding: 50px; /* Increased Padding */
+  border-radius: 15px; /* Rounded Corners */
+  box-shadow: 20px 20px 30px rgba(2, 70, 11, 0.2);
+  margin: auto;
+  border: #072310;
+  border-width: 2px;
+}
+
+/* ---- Label Styling ---- */
+label {
+  font-size: 22px; /* Bigger Font */
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 10px;
+  color: #065f22;
+}
+
+/* ---- Input Fields ---- */
+input {
+  width: 100%;
+  padding: 12px; /* Moderate Padding */
+  margin: 8px 0;
+  border: 2px solid #065f22;
+  border-radius: 8px;
+  font-size: 18px; /* Bigger Font */
+}
+
+/* ---- Submit Button ---- */
+button {
+  background: #065f22;
+  color: white;
+  padding: 15px 30px; /* Smaller Padding */
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px; /* Smooth Corners */
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+  width: 50%; /* Reduced Width */
+  display: block;
+  margin: 20px auto; /* Centering the button */
+}
+
+button:hover {
+  background: #048c38; /* Slightly lighter green on hover */
+}
+
+/* Hover Effect on Button */
+button:hover {
+  background: #043d15;
+  transform: scale(1.05);
+}

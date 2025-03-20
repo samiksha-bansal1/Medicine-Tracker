@@ -90,4 +90,19 @@ router.post("/delete/:id", isAuthenticated, async (req, res) => {
   }
 });
 
+router.get("/details", async (req, res) => {
+  res.render("details");
+});
+
+router.get("/report-card", async (req, res) => {
+  res.render("report-card");
+});
+
+router.get("/analytics", async (req, res) => {
+  res.render("analytics");
+});
+
+router.get("/summary", async (req, res) => {
+  res.render("summary");
+});
 module.exports = router;

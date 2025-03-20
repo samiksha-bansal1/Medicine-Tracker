@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="/css/style2.css" />
-     
-    <!----===== Iconscout CSS ===== -->
+    <%- include('partials/head') %>
+    <link rel="stylesheet" href="/css/navbar_about.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Admin Dashboard Panel</title>
 </head>
@@ -70,6 +64,7 @@
   <% } %>
   
         </div>
+
     </section>
     <script>
         function confirmDelete(prescriptionId) {
@@ -87,6 +82,6 @@
             }
         }
     </script>
-         
+    
 </body>
 </html>
